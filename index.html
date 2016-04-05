@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="jquery-2.1.3.js"></script>
+    <script src="mattCrop.js"></script>
+</head>
+<body>
+    <form>
+        <label>Folder Path</label><input id="pathInput" type="text" name="path" value="C:\nw\imageSplicer\charactersToSplice\" placeholder="file path" size="75"/><br />
+        <label>width</label><input type="text" name="width" id="width" value="32"/><br />
+        <label>height</label><input type="text" name="height" id="height" value="48"/><br />
+        <label>Number Of Rows</label><input type="text" name="numberOfRows" id="numberOfRows" value="4" /><br />
+        <label>Number Of Images Per Row</label><input type="text" name="numberOfImagesPerRow" id="numberOfImagesPerRow" value="4"/><br />
+        <label>Optional File Prefix</label><input type="text" name="filePrefix" id="filePrefix" value="" />
+        <input type="submit" />
+    </form>
+    <script>
+        $('document').ready(function () {
+            $('form').submit(function (event) {
+                event.preventDefault();
+                //console.log($(this).serializeArray());
+                var strPath = $('#pathInput').val();
+                var numWidth = $('#width').val();
+                var numHeight = $('#height').val();
+                var numImgPerRow = $('#numberOfImagesPerRow').val();
+                var numRows = $('#numberOfRows').val();
+                var strFilePrefix = $('#filePrefix').val();
+                makeTheDirs(strPath);
+                spliceTheImages(strPath,numWidth,numHeight,numImgPerRow,numRows,strFilePrefix);
+                //function spliceTheImages(pathToWalk, width, height, imagesPerRow, numberOfRows) {
+
+            });
+        });
+    </script>
+</body>
+</html>
